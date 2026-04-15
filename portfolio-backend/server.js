@@ -5,12 +5,12 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/api/projects', require('./routes/projectRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/skills', require('./routes/skillRoutes'));
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ MongoDB Connected"))
